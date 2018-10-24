@@ -26,7 +26,7 @@ public Plugin myinfo =
 
 public void OnPluginStart()
 {
-	CreateConVar("sm_panzerrockets", PLUGIN_VERSION, "Panzer rocket version -- Do not modify", FCVAR_NOTIFY | FCVAR_DONTRECORD);
+	CreateConVar("sm_panzerrockets_version", PLUGIN_VERSION, "Panzer rocket version -- Do not modify", FCVAR_NOTIFY | FCVAR_DONTRECORD);
 	g_hRocketDamage = CreateConVar("sm_panzerrockets_damage", "120.0", "Rocket base damage", FCVAR_NONE, true, 0.0, false);
 	g_hRocketSpeed = CreateConVar("sm_panzerrockets_speed", "4000.0", "Rocket speed", FCVAR_NONE, true, 0.0, false);
 	g_iOffsetDamage = FindSendPropInfo("CTFProjectile_Rocket", "m_iDeflected") + 4;
