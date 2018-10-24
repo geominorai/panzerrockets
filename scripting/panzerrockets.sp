@@ -36,7 +36,7 @@ public void OnEntityCreated(int iEntity, const char[] sClassName)
 {
 	if (StrEqual(sClassName, "instanced_scripted_scene", false)) {
 		SDKHook(iEntity, SDKHook_Spawn, OnTaunt);
-    }
+	}
 }
 
 public Action OnTaunt(int iEntity) {
