@@ -5,4 +5,6 @@ This is a Sourcemod plugin that allows soldiers using the Panzer Pants taunt to 
 
 Plugin thread: https://forums.alliedmods.net/showthread.php?t=311570
 
+Requires [smlib](https://github.com/bcserv/smlib/) to compile.
+
 ![Screenshot 1](./screenshots/01.jpg) ![Screenshot 2](./screenshots/02.jpg)
