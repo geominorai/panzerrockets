@@ -1,0 +1,24 @@
+language: sourcepawn
+
+sudo: false
+addons:
+  apt:
+    packages:
+      - lib32stdc++6
+
+env:
+  - SOURCEMOD=1.8
+  - SOURCEMOD=1.9
+  - SOURCEMOD=1.10
+
+before_script:
+  - wget "http://www.sourcemod.net/latest.php?version=$SOURCEMOD&os=linux" -O sourcemod-$SOURCEMOD-linux.tar.gz
+  - tar -xzf sourcemod-$SOURCEMOD-linux.tar.gz
+  - cp -r addons/sourcemod/scripting/* scripting
+  - cd scripting
+  - mkdir include/smlib
+  - wget https://raw.githubusercontent.com/bcserv/smlib/transitional_syntax/scripting/include/smlib/entities.inc -O include/smlib/entities.inc
+  - chmod +x spcomp
+
+script:
+- ./compile.sh panzerrockets.sp
