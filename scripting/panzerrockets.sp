@@ -34,28 +34,28 @@ public void OnPluginStart() {
 
 public void OnEntityCreated(int iEntity, const char[] sClassName) {
 	if (StrEqual(sClassName, "instanced_scripted_scene", false)) {
-		SDKHook(iEntity, SDKHook_Spawn, OnTaunt);
+		SDKHook(iEntity, SDKHook_SpawnPost, OnTaunt);
 	}
 }
 
-public Action OnTaunt(int iEntity) {
+public void OnTaunt(int iEntity) {
 	char sSceneFile[PLATFORM_MAX_PATH];
 	GetEntPropString(iEntity, Prop_Data, "m_iszSceneFile", sSceneFile, sizeof(sSceneFile));
 
 	if (!StrEqual(sSceneFile, "scenes\\player\\soldier\\low\\taunt_vehicle_tank_fire.vcd")) {
-		return Plugin_Continue;
+		return;
 	}
 
 	int iOwner = GetEntPropEnt(iEntity, Prop_Data, "m_hOwner");
 	int iTeam = GetClientTeam(iOwner);
 
 	if (!g_hTeam.IntValue || (g_hTeam.IntValue > 1 && iTeam != g_hTeam.IntValue)) {
-		return Plugin_Continue;
+		return;
 	}
 
 	int iRocketEntity = CreateEntityByName("tf_projectile_rocket");
 	if (!IsValidEntity(iRocketEntity)) {
-		return Plugin_Continue;
+		return;
 	}
 
 	Entity_SetOwner(iRocketEntity, iOwner);
@@ -91,5 +91,4 @@ public Action OnTaunt(int iEntity) {
 	Entity_SetAbsVelocity(iRocketEntity, fVel);
 
 	DispatchSpawn(iRocketEntity);
-	return Plugin_Continue;
 }
