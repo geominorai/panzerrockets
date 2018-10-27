@@ -1,5 +1,4 @@
-# panzerrockets
-TF2 Panzer Taunt Rockets
+# TF2 Panzer Taunt Rockets
 
 [![Travis](https://img.shields.io/travis/geominorai/panzerrockets.svg?style=flat-square)](https://travis-ci.org/geominorai/panzerrockets)
 
