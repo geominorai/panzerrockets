@@ -7,3 +7,6 @@ This is a Sourcemod plugin that allows soldiers using the Panzer Pants taunt to 
 Plugin thread: https://forums.alliedmods.net/showthread.php?t=311570
 
 ![Screenshot 1](./screenshots/01.jpg) ![Screenshot 2](./screenshots/02.jpg)
+
+Demonstration video:
+https://www.youtube.com/watch?v=3M8UpyAzo4
