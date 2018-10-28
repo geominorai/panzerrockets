@@ -16,8 +16,6 @@ before_script:
   - tar -xzf sourcemod-$SOURCEMOD-linux.tar.gz
   - cp -r addons/sourcemod/scripting/* scripting
   - cd scripting
-  - mkdir include/smlib
-  - wget https://raw.githubusercontent.com/bcserv/smlib/transitional_syntax/scripting/include/smlib/entities.inc -O include/smlib/entities.inc
   - chmod +x spcomp
 
 script:
