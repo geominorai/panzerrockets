@@ -1,7 +1,7 @@
 #pragma semicolon 1
 
 #define PLUGIN_AUTHOR "AI"
-#define PLUGIN_VERSION "0.2.0"
+#define PLUGIN_VERSION "0.2.1"
 
 #include <sourcemod>
 #include <sdkhooks>
@@ -20,7 +20,7 @@ bool g_bSnap[MAXPLAYERS+1] = {true, ...};
 int g_iOffsetDamage;
 
 public Plugin myinfo = {
-	name = "Panzer Rockets",
+	name = "Panzer Tank Rockets",
 	author = PLUGIN_AUTHOR,
 	description = "Shoot rockets from panzer taunt's cannon",
 	version = PLUGIN_VERSION,
@@ -39,16 +39,23 @@ public void OnPluginStart() {
 	AutoExecConfig(true);
 }
 
-public void OnMapEnd() {
+public void OnMapStart() {
 	for (int i=1; i<=MaxClients; i++) {
 		g_bTank[i] = false;
 		g_bSnap[i] = true;
 	}
 }
 
-public void OnClientDisconnect(int iClient) {
+public void OnClientConnected(int iClient) {
 	g_bTank[iClient] = false;
 	g_bSnap[iClient] = true;
+}
+
+public void TF2_OnConditionRemoved(int iClient, TFCond iCondition) {
+	if (iCondition == TFCond_Taunting) {
+		g_bTank[iClient] = false;
+		g_bSnap[iClient] = true;
+	}
 }
 
 public void OnEntityCreated(int iEntity, const char[] sClassName) {
